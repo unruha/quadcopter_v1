@@ -30,8 +30,13 @@ void calibrateMotors() {
 }
 
 void loop() {
-  int val = analogRead(POTENTIOMETER_PIN);
-  val = map(val, 0, 1023, MIN_SIGNAL, MAX_SIGNAL);
-  Serial.println(val);
-  motor1.writeMicroseconds(val);
+  int potentiometerVal = analogRead(POTENTIOMETER_PIN);
+  int motorVal = map(potentiometerVal, 0, 1023, MIN_SIGNAL, MAX_SIGNAL);
+
+  // print out data in CSV format
+  Serial.print(potentiometerVal);
+  Serial.print(" ");
+  Serial.println(motorVal);
+  
+  motor1.writeMicroseconds(motorVal);
 }
