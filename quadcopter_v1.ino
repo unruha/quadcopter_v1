@@ -22,18 +22,18 @@ void calibrateMotors() {
   motor1.writeMicroseconds(MAX_SIGNAL);
 
   // delay for 3 seconds to finish max signal calibration
-  delay(3000);
+  delay(2000);
 
   motor1.writeMicroseconds(MIN_SIGNAL);
 
-  delay(3000);
+  delay(2000);
 }
 
 void loop() {
   int potentiometerVal = analogRead(POTENTIOMETER_PIN);
   int motorVal = map(potentiometerVal, 0, 1023, MIN_SIGNAL, MAX_SIGNAL);
 
-  // print out data in CSV format
+  // write data to port
   Serial.print(potentiometerVal);
   Serial.print(" ");
   Serial.println(motorVal);
